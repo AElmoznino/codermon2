@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
-import { filterPokemons } from './../utils/utils'
+import { Link } from 'react-router-dom'
+import { filterPokemons } from '../../utils/utils'
 
 const GET_POKEMONS = gql`
   query getPokemons {
@@ -36,7 +37,7 @@ const Start = () => {
             {filteredPokemons.map(pokemon => {
               return (
                 <div key={pokemon.id}>
-                  <h3>{pokemon.name}</h3>
+                  <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
                   <img
                     alt={pokemon.name}
                     src={pokemon.image}
